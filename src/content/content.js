@@ -1,3 +1,9 @@
+console.info("content initialisation")
+
+chrome.runtime.onMessage.addListener((msg, _, sendResponse) => {
+	if (msg?.type == "collect") sendResponse(new LinkedinScrapper())
+})
+
 // Linkedin Scrapper Tool
 // ----------------------
 // Tested with this profiles:
@@ -9,14 +15,17 @@
 class LinkedinScrapper {
 	constructor() {
 		// Fonction interne pour le formatage des données textuelles.
-		function nbFormatter(e) { e = e.innerText; return e.match(/\d+/gm).join("") + (e.includes("Plus") ? "+" : "") }
+		function nbFormatter(e) {
+			e = e.innerText
+			return e.match(/\d+/gm).join("") + (e.includes("Plus") ? "+" : "")
+		}
 
 		// Récupère le nom et le prénom de la personne du profil.
 		[this.firstname, this.lastname] = qs("h1").innerText.split(" ")
 
 		// Récupère le nombre d'abonnés et le nombre de relations.
 		const FRDT = qs(".ph5.pb5 ul")[1].qs("span.t-bold")
-		
+
 		// Si le type de "FRDT" est une "NodeList",
 		if (TrueTypeOf(FRDT) === NodeList) {
 
@@ -29,15 +38,14 @@ class LinkedinScrapper {
 			this.follower = this.relations = "0"
 
 			// Récupère et formate la valeur en fonction du type de donnée que l'on a obtenu.
-			if (FRDT.parentElement.innerText.includes("relation")) { this.relations = nbFormatter(FRDT) }
-			else { this.follower = nbFormatter(FRDT) }
+			if (FRDT.parentElement.innerText.includes("relation")) {
+				this.relations = nbFormatter(FRDT)
+			} else {
+				this.follower = nbFormatter(FRDT)
+			}
 		}
-
-		// .PwsFJlSbJYYLFQRfQrNzFJIQATPuZiSwcs .pvs-navigation__text
-		// .PwsFJlSbJYYLFQRfQrNzFJIQATPuZiSwcs .pvs-navigation__text
 	}
 }
-
 
 // le nom et prénom du profil => OK
 // le poste actuel du profil
