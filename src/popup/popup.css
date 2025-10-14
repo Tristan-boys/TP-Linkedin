@@ -1,2 +1,78 @@
-* { margin: 0; padding: 0; font-family: calibri; }
-body { min-width: 300px; }
+* {
+	margin: 0;
+	padding: 0;
+	font-family: calibri;
+}
+
+:root {
+	--bg: #ffffff;
+	--text: #111;
+	--muted: #555;
+	--accent: #0a66c2;
+	--radius: 8px;
+	--gap: 6px;
+	--pad: 8px;
+	--max-width: 320px;
+	--font-sans: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-sans);
+	background: var(--bg);
+	color: var(--text);
+	width: 300px;
+	max-width: var(--max-width);
+	font-size: 14px;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
+	padding: var(--pad);
+}
+
+h1 {
+	font-size: 16px;
+	margin: 0 0 var(--gap) 0;
+	font-weight: 600;
+	color: var(--text);
+}
+
+p a {
+	display: block;
+	text-decoration: none;
+	color: var(--accent);
+	font-weight: 500;
+	font-size: 13px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+p {
+	margin: 0;
+	padding: var(--pad);
+	background: #f6f6f6;
+	border-radius: var(--radius);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--gap);
+	font-size: 13px;
+	transition: background 0.2s;
+}
+
+p:hover {
+	background: #eaeaea;
+}
+
+p a:after {
+	content: "↗";
+	margin-left: 4px;
+	font-size: 11px;
+	vertical-align: super;
+}
