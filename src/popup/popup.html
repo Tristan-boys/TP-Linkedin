@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<title>Analyse de profil Linkedin</title>
+		<title>Résumé du profil Linkedin</title>
 		<meta charset="utf-8">
 
 		<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,13 +9,61 @@
 		<link rel="stylesheet" href="/src/popup/popup.css">
 	</head>
 	<body>
-		<h1>Profil :</h1>
-		<p><a id="Name_Nickname" href="#"></a></p>
-		<p><a id="Actual_Post" href="#"></a></p>
-		<p><a id="Subscribers" href="#"></a></p>
-		<p><a id="Relations" href="#"></a></p>
-		<p><a id="Experiences" href="#"></a></p>
-		<p><a id="Certifications" href="#"></a></p>
-		<p><a id="Abilities" href="#"></a></p>
+		<div class="container">
+			<header class="card header-card">
+				<div class="avatar" id="avatar">FX</div>
+				<div class="user-meta">
+					<div class="name">
+						<span id="profile-firstname">Prénom</span>
+						<span id="profile-lastname">Nom</span>
+					</div>
+					<div class="small" id="profile-id">ID: —</div>
+				</div>
+			</header>
+
+			<main class="card">
+				<section class="stats">
+					<div class="stat">
+						<div class="stat-value" id="profile-relations">—</div>
+						<div class="stat-label">Relations</div>
+					</div>
+					<div class="stat">
+						<div class="stat-value" id="profile-followers">—</div>
+						<div class="stat-label">Abonnés</div>
+					</div>
+					<div class="stat">
+						<div class="stat-value" id="profile-jobs-count">—</div>
+						<div class="stat-label">Emplois</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<h2>Poste actuel</h2>
+					<div id="profile-job" class="job-card">—</div>
+				</section>
+
+				<section class="section">
+					<h2>Historique d'emplois</h2>
+					<ul id="profile-jobs" class="jobs-list">
+						<li class="muted">Aucun</li>
+					</ul>
+				</section>
+
+				<section class="chips">
+					<div>
+						<h3>Langues</h3>
+						<div id="profile-langs" class="chip-list">
+							<span class="muted">Non renseigné</span>
+						</div>
+					</div>
+					<div>
+						<h3>Compétences</h3>
+						<div id="profile-skills" class="chip-list">
+							<span class="muted">Non renseigné</span>
+						</div>
+					</div>
+				</section>
+			</main>
+		</div>
 	</body>
 </html>
