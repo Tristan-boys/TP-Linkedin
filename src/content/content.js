@@ -1,5 +1,3 @@
-import "./tools"
-
 // Linkedin Scrapper Tool
 // ----------------------
 // Tested with this profiles:
@@ -11,10 +9,10 @@ import "./tools"
 class LinkedinScrapper {
 	constructor() {
 		// Fonction interne pour le formatage des données textuelles.
-		function nbFormatter(e) { return e.match(/\d+/gm).join("") + (e.includes("Plus") ? "+" : "") }
+		function nbFormatter(e) { e = e.innerText; return e.match(/\d+/gm).join("") + (e.includes("Plus") ? "+" : "") }
 
 		// Récupère le nom et le prénom de la personne du profil.
-		[this.firstname, this.lastname] = qs("#ember706").innerText.split(" ")
+		[this.firstname, this.lastname] = qs("h1").innerText.split(" ")
 
 		// Récupère le nombre d'abonnés et le nombre de relations.
 		const FRDT = qs(".ph5.pb5 ul")[1].qs("span.t-bold")
@@ -35,8 +33,8 @@ class LinkedinScrapper {
 			else { this.follower = nbFormatter(FRDT) }
 		}
 
-		// .kUbUeMWFFRfEMZjUXbqITIadNMItFbqxpKNrA .pvs-navigation__text
-		// .kUbUeMWFFRfEMZjUXbqITIadNMItFbqxpKNrA .pvs-navigation__text
+		// .PwsFJlSbJYYLFQRfQrNzFJIQATPuZiSwcs .pvs-navigation__text
+		// .PwsFJlSbJYYLFQRfQrNzFJIQATPuZiSwcs .pvs-navigation__text
 	}
 }
 
